@@ -1,9 +1,9 @@
 name: Build and Push Container Image
 
 on:
-  push:
-    branches:
-      - main
+  release:
+    types:
+      - created
 
 jobs:
   build:
@@ -28,4 +28,4 @@ jobs:
       with:
         context: .
         push: true
-        tags: ghcr.io/${{ github.repository }}/piccolo:latest
+        tags: ghcr.io/${{ github.repository }}/piccolo:${{ github.ref_name }}
